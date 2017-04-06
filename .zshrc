@@ -239,4 +239,5 @@ lab () { ssh $1.wdslab.com }
 
 # ssh into VVV Vagrant machine.
 alias vssh="z VVV && vagrant ssh"
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
