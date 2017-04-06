@@ -236,4 +236,7 @@ sanitize_title () { echo "$1" | sed -e 's/[^a-zA-Z0-9 ]//g' | sed -e 's/ /-/g' |
 
 # connect to lab.
 lab () { ssh $1.wdslab.com }
+
+# ssh into VVV Vagrant machine.
+alias vssh="z VVV && vagrant ssh"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
