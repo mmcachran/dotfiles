@@ -235,7 +235,14 @@ alias g-pretty-graph="git log --graph --pretty=format:\"%C(yellow)%h%Creset%C(cy
 sanitize_title () { echo "$1" | sed -e 's/[^a-zA-Z0-9 ]//g' | sed -e 's/ /-/g' | tr '[:upper:]' '[:lower:]' }
 
 # connect to lab.
-lab () { ssh $1.wdslab.com }
+lab() {
+    cmd="ssh wdslab.com"
+    if [ ! -z "$1" ]
+        then
+            cmd=$cmd" -t 'su - $1'"
+    fi  
+    eval $cmd
+}
 
 # ssh into VVV Vagrant machine.
 alias vssh="z VVV && vagrant ssh"
