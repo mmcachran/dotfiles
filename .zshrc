@@ -247,7 +247,4 @@ lab() {
 # ssh into VVV Vagrant machine.
 alias vssh="z VVV && vagrant ssh"
 
-# ssh into DO droplet
-alias dossh="ssh root@45.55.168.182"
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
