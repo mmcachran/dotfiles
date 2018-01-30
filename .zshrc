@@ -1,9 +1,23 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mcachran/.oh-my-zsh
 #export PATH="$(brew --prefix josegonzalez/php/php55)/bin:/usr/local/bin:$PATH"
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-export PATH='/usr/local/bin/node'
-export PATH='/usr/local/bin/npm'
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+export PATH='$PATH:/usr/local/bin/node'
+export PATH='$PATH:/usr/local/bin/npm'
+export PATH=$PATH:~/.composer/vendor/bin
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH=~/.composer/vendor/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
+export PATH="$PATH":~/.node/bin
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
+
+
+export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
+
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -246,5 +260,7 @@ lab() {
 
 # ssh into VVV Vagrant machine.
 alias vssh="z VVV && vagrant ssh"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+alias tail_error_log="tail -f /Users/mcachran/.valet/Log/php.log"
+alias view_error_log="code /Users/mcachran/.valet/Log/php.log"
+alias loremc="lorem --sentences=25 | pbcopy"
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'

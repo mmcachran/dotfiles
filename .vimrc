@@ -10,4 +10,3 @@ set encoding=utf-8
 
 let g:ackprg = 'ag --vimgrep'
 
-execute pathogen#infect()
