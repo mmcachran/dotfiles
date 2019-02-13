@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mcachran/.oh-my-zsh
 #export PATH="$(brew --prefix josegonzalez/php/php55)/bin:/usr/local/bin:$PATH"
-export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
+#export PATH="$(brew --prefix homebrew/php/php72)/bin:$PATH"
 export PATH='$PATH:/usr/local/bin/node'
 export PATH='$PATH:/usr/local/bin/npm'
 export PATH=$PATH:~/.composer/vendor/bin
@@ -14,8 +14,7 @@ source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
 
-
-export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
+#export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
 
 
 
@@ -69,7 +68,7 @@ plugins=(z git brew brew-cask git git-extras github lol osx zsh-syntax-highlight
 
 # User configuration
 
-export PATH="/Users/mcachran/bin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
+export PATH="$PATH:/Users/mcachran/bin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -195,7 +194,7 @@ alias gsu="git submodule foreach git pull origin master"
 alias gcd='cd `git rev-parse --show-toplevel`'
 # alias gup='git fetch && git checkout master && git rebase origin/master && git checkout - && git rebase'
 # alias git-delete-merged-branches='git branch --merged master | grep -v "\*" | xargs -n 1 git branch -d'
-
+alias gbdno="git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
 
 # ----------------------
 # Git Functions
@@ -260,7 +259,16 @@ lab() {
 
 # ssh into VVV Vagrant machine.
 alias vssh="z VVV && vagrant ssh"
+
 alias tail_error_log="tail -f /Users/mcachran/.valet/Log/php.log"
 alias view_error_log="code /Users/mcachran/.valet/Log/php.log"
 alias loremc="lorem --sentences=25 | pbcopy"
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias pphpunit='$(pwd)/vendor/phpunit/phpunit/phpunit'
+alias gcbranch="git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+
+# Docker Aliases.
+alias dcwp='docker-compose exec --user www-data phpfpm wp'
+alias dcbash='docker-compose exec --user root phpfpm bash'
+docker-stop() { docker stop $(docker ps -a -q); }
+alias dup="docker-stop && docker-compose up -d"
