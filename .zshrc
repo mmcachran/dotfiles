@@ -277,23 +277,14 @@ alias gcbranch="git fetch -p && for branch in `git branch -vv | grep ': gone]' |
 
 vsite() {
 	# Remove the base VVV ssh key.
-	#ssh-keygen -R 192.168.50.4
+	ssh-keygen -R 192.168.50.4
 
-	# Get all currently powered on VM directories.
-	VAGRANT_IDS=$(vagrant global-status | grep -v "poweroff" | cut -d' ' -f1 | grep -v "\-\-\-\-\-\-\-")
-	
-	IFS='\n' read -rA fields <<< "$VAGRANT_IDS"
+	# Shut down all currently running machines.
+	vagrant global-status | awk '/running/{print $1}' | xargs -I % bash -c "echo 'Halting: ' % && vagrant halt %"
 
-	echo "$fields"
-	# Loop through directories and halt each.
-	for i in "$fields[@]"
-	do
-		echo "$i"
-		echo "---"
-	done
-
-	# Switch to the correct site.
-	#cd "~/Sites/$1"
+	# Switch to the correct site and boot up the site.
+	z "$1"
+	vagrant up
 }
 
 
