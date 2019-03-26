@@ -16,7 +16,7 @@ export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mca
 
 #export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
 
-
+export NODE_OPTIONS="–max-old-space-size=4096"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -257,8 +257,16 @@ lab() {
     eval $cmd
 }
 
+# Download a site.
+download_site() {
+	wget -mkEpnp –no-check-certificate $1
+}
+
 # ssh into VVV Vagrant machine.
-alias vssh="z VVV && vagrant ssh"
+alias vssh="vagrant ssh"
+tail_vv_project() {
+	vssh -- -t "sudo tail -f /srv/www/$1/htdocs/wp-content/debug.log"
+}
 
 alias tail_error_log="tail -f /Users/mcachran/.valet/Log/php.log"
 alias view_error_log="code /Users/mcachran/.valet/Log/php.log"
@@ -266,6 +274,28 @@ alias loremc="lorem --sentences=25 | pbcopy"
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias pphpunit='$(pwd)/vendor/phpunit/phpunit/phpunit'
 alias gcbranch="git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+
+vsite() {
+	# Remove the base VVV ssh key.
+	#ssh-keygen -R 192.168.50.4
+
+	# Get all currently powered on VM directories.
+	VAGRANT_IDS=$(vagrant global-status | grep -v "poweroff" | cut -d' ' -f1 | grep -v "\-\-\-\-\-\-\-")
+	
+	IFS='\n' read -rA fields <<< "$VAGRANT_IDS"
+
+	echo "$fields"
+	# Loop through directories and halt each.
+	for i in "$fields[@]"
+	do
+		echo "$i"
+		echo "---"
+	done
+
+	# Switch to the correct site.
+	#cd "~/Sites/$1"
+}
+
 
 # Docker Aliases.
 alias dcwp='docker-compose exec --user www-data phpfpm wp'
