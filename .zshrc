@@ -1,7 +1,5 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/mcachran/.oh-my-zsh
-#export PATH="$(brew --prefix josegonzalez/php/php55)/bin:/usr/local/bin:$PATH"
-#export PATH="$(brew --prefix homebrew/php/php72)/bin:$PATH"
 export PATH='$PATH:/usr/local/bin/node'
 export PATH='$PATH:/usr/local/bin/npm'
 export PATH=$PATH:~/.composer/vendor/bin
@@ -115,11 +113,8 @@ alias brewupdate="brew update && brew upgrade && brew cleanup && brew cask clean
 alias ll="ls -laG"
 alias clr="clear" # Clear your terminal screen
 alias flush="sudo discoveryutil udnsflushcaches" # Flush DNS (Yosemite)
-#alias flush="killall -HUP mDNSResponder" # Flush DNS (Mavericks, Mountain Lion, Lion)
-#alias flush="dscacheutil -flushcache" # Flush DNS (Snow Leopard, Leopard)
 alias ip="curl icanhazip.com" # Your public IP address
 alias ldir="ls -al | grep ^d" # List all directories in current directory in long list format
-#alias o="open ." # Open the current directory in Finder
 alias ut="uptime" # Computer uptime
 alias phpall='for f (*.php~test.php(om)) {php -l $f}'
 alias brewupdate="brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup && npm update &&  npm update -g && gem update"
@@ -190,8 +185,6 @@ alias gstd='git stash drop'
 alias gls="grep path .gitmodules | sed 's/.*= //'"
 alias gsu="git submodule foreach git pull origin master"
 alias gcd='cd `git rev-parse --show-toplevel`'
-# alias gup='git fetch && git checkout master && git rebase origin/master && git checkout - && git rebase'
-# alias git-delete-merged-branches='git branch --merged master | grep -v "\*" | xargs -n 1 git branch -d'
 alias gbdno="git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
 
 # ----------------------
