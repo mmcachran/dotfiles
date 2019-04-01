@@ -13,6 +13,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
 
 #export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
 
