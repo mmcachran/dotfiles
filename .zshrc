@@ -276,6 +276,12 @@ vsite() {
 	# Switch to the correct site and boot up the site.
 	z "$1"
 	vagrant up
+
+	# Open the directory in code.
+	code "www/$1/public_html/wp-content"
+
+	# Open the tab in Chrome.
+	open -a "Google Chrome" "https://$1.test"
 }
 
 # Docker Aliases.
