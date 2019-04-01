@@ -14,9 +14,6 @@ source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
-
-#export NODE_PATH=:/home/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm/lib/node_modules
-
 export NODE_OPTIONS="–max-old-space-size=4096"
 
 # Set name of the theme to load.
@@ -287,7 +284,6 @@ vsite() {
 	z "$1"
 	vagrant up
 }
-
 
 # Docker Aliases.
 alias dcwp='docker-compose exec --user www-data phpfpm wp'
