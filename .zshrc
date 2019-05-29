@@ -12,7 +12,7 @@ source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
-export NODE_OPTIONS="–max-old-space-size=4096"
+export NODE_OPTIONS="--max_old_space_size=8192"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -277,8 +277,8 @@ vsite() {
 	z "$1"
 	vagrant up
 
-	# Open the directory in code.
-	code "www/$1/public_html/wp-content"
+	# Open the code directory in code.
+	cd "www/$1/public_html/wp-content" && code .
 
 	# Open the tab in Chrome.
 	open -a "Google Chrome" "https://$1.test"
