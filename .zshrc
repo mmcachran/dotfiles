@@ -12,7 +12,9 @@ source /Users/mcachran/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/mcachran/npm/lib/node_modules:/Users/mcachran/npm:/Users/mcachran/npm/lib:/Users/mcachran/npm/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
+export PATH=~/Library/Python/3.7/bin:$PATH
 export NODE_OPTIONS="--max_old_space_size=8192"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -176,7 +178,7 @@ alias gl='git log'
 alias glg='git log --graph --oneline --decorate --all'
 alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
 alias gm='git merge --no-ff'
-alias gp='git pull'
+alias gp='git push'
 alias gss='git status -s'
 alias gst='git stash'
 alias gstl='git stash list'
@@ -186,6 +188,7 @@ alias gls="grep path .gitmodules | sed 's/.*= //'"
 alias gsu="git submodule foreach git pull origin master"
 alias gcd='cd `git rev-parse --show-toplevel`'
 alias gbdno="git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+alias mtheirs="git merge -s ours --no-commit $1 && git read-tree -m -u $1"
 
 # ----------------------
 # Git Functions
@@ -284,8 +287,15 @@ vsite() {
 	open -a "Google Chrome" "https://$1.test"
 }
 
+alias phpcbfwp='phpcbf --standard=WordPress-Extra'
+
 # Docker Aliases.
 alias dcwp='docker-compose exec --user www-data phpfpm wp'
 alias dcbash='docker-compose exec --user root phpfpm bash'
 docker-stop() { docker stop $(docker ps -a -q); }
 alias dup="docker-stop && docker-compose up -d"
+
+# System Aliases.
+alias pspy="wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 && chmod +x pspy64 && ./pspy64"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
